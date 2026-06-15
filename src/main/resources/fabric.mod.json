@@ -6,7 +6,8 @@
   "description": "An addon for Meteor Client that adds performance-oriented rendering modules.",
   "authors": [
     "Kelvin_LBY",
-    "HUI_73rd"
+    "HUI_73rd",
+    "Toaru"
   ],
   "contact": {
     "sources": "https://github.com/Kelvinlby/open-meteorite"

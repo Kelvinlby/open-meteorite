@@ -73,7 +73,7 @@ To run a development client with the addon loaded:
 
 ## Authors
 
-Kelvin_LBY and HUI_73rd.
+Kelvin_LBY, HUI_73rd and Toaru.
 
 ## License
 
