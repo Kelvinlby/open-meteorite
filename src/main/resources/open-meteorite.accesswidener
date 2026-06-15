@@ -1,4 +1,0 @@
-accessWidener v2 official
-
-# Culling reads the block state of a block entity render state to decide what to cull.
-accessible field net/minecraft/client/renderer/blockentity/state/BlockEntityRenderState blockState Lnet/minecraft/world/level/block/state/BlockState;

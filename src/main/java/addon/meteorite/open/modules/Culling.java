@@ -1,23 +1,23 @@
-package addon.kelvinlby.openmeteorite.modules;
+package addon.meteorite.open.modules;
 
-import addon.kelvinlby.openmeteorite.OpenMeteorite;
+import addon.meteorite.open.OpenMeteorite;
 import meteordevelopment.meteorclient.events.render.RenderBlockEntityEvent;
 import meteordevelopment.meteorclient.settings.*;
 import meteordevelopment.meteorclient.systems.modules.Module;
 import meteordevelopment.meteorclient.utils.player.PlayerUtils;
 import meteordevelopment.orbit.EventHandler;
-import net.minecraft.client.renderer.culling.Frustum;
-import net.minecraft.core.BlockPos;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.item.FallingBlockEntity;
-import net.minecraft.world.level.block.BeaconBlock;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.EnchantingTableBlock;
-import net.minecraft.world.level.block.SignBlock;
-import net.minecraft.world.level.block.SpawnerBlock;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
+import net.minecraft.block.AbstractSignBlock;
+import net.minecraft.block.BeaconBlock;
+import net.minecraft.block.Block;
+import net.minecraft.block.EnchantingTableBlock;
+import net.minecraft.block.SpawnerBlock;
+import net.minecraft.client.render.Frustum;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.FallingBlockEntity;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Box;
+import net.minecraft.util.math.Vec3d;
 
 import java.util.Set;
 
@@ -92,7 +92,7 @@ public class Culling extends Module {
         super(OpenMeteorite.CATEGORY, "culling", "Smartly culls selected in-game elements when they are off-screen (out of FOV) or too far away.");
     }
 
-    // The view frustum captured each frame from LevelRenderer#applyFrustum,
+    // The view frustum captured each frame from WorldRenderer#applyFrustum,
     // used to cull block entities (which aren't passed a frustum directly).
     private Frustum frustum;
 
@@ -108,7 +108,7 @@ public class Culling extends Module {
         boolean target = entities.get().contains(entity.getType())
             || (cullFallingBlocks.get() && entity instanceof FallingBlockEntity);
 
-        return target && shouldCull(frustum, entity.getBoundingBox(), entity.position());
+        return target && shouldCull(frustum, entity.getBoundingBox(), entity.getEntityPos());
     }
 
     // Block entities
@@ -123,18 +123,18 @@ public class Culling extends Module {
         if (block instanceof EnchantingTableBlock) target = cullEnchantBook.get();
         else if (block instanceof BeaconBlock) target = cullBeaconBeams.get();
         else if (block instanceof SpawnerBlock) target = cullSpawnerEntities.get();
-        else if (block instanceof SignBlock) target = cullSignText.get();
+        else if (block instanceof AbstractSignBlock) target = cullSignText.get();
         else return;
 
-        BlockPos pos = event.blockEntityState.blockPos;
-        if (target && shouldCull(frustum, new AABB(pos), Vec3.atCenterOf(pos))) event.cancel();
+        BlockPos pos = event.blockEntityState.pos;
+        if (target && shouldCull(frustum, new Box(pos), Vec3d.ofCenter(pos))) event.cancel();
     }
 
     // Returns true if the element should be hidden. It is culled when its entire
     // bounding box is outside the view frustum (so entities on the edge of the
     // screen, or partially visible, are still rendered), or - when distance
     // culling is enabled - when it is farther than the threshold.
-    private boolean shouldCull(Frustum frustum, AABB box, Vec3 center) {
+    private boolean shouldCull(Frustum frustum, Box box, Vec3d center) {
         if (applyDistance.get() && !PlayerUtils.isWithinCamera(center, distance.get())) return true;
         return frustum != null && !frustum.isVisible(box);
     }

@@ -3,24 +3,24 @@
   "id": "open-meteorite",
   "version": "${version}",
   "name": "Open Meteorite",
-  "description": "A Meteor Client addon.",
+  "description": "An addon for Meteor Client that adds performance-oriented rendering modules.",
   "authors": [
-    "kelvinlby"
+    "Kelvin_LBY",
+    "HUI_73rd"
   ],
   "contact": {
-    "sources": "https://github.com/kelvinlby/open-meteorite"
+    "sources": "https://github.com/Kelvinlby/open-meteorite"
   },
   "icon": "assets/open-meteorite/icon.png",
   "environment": "client",
   "entrypoints": {
     "meteor": [
-      "addon.kelvinlby.openmeteorite.OpenMeteorite"
+      "addon.meteorite.open.OpenMeteorite"
     ]
   },
   "mixins": [
     "open-meteorite.mixins.json"
   ],
-  "accessWidener": "open-meteorite.accesswidener",
   "custom": {
     "meteor-client:color": "225,25,25",
     "modmenu": {
@@ -30,8 +30,11 @@
     }
   },
   "depends": {
-    "java": ">=${jdk_version}",
-    "minecraft": "${minecraft_version}",
+    "java": ">=21",
+    "minecraft": [
+      "1.21.4",
+      "1.21.11"
+    ],
     "meteor-client": "*"
   }
 }

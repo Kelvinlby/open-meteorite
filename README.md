@@ -1,6 +1,6 @@
 # Open Meteorite
 
-[![build](https://img.shields.io/github/actions/workflow/status/Kelvinlby/open-meteorite/dev_build.yml?branch=main&style=for-the-badge&logo=github&label=Build)](https://github.com/Kelvinlby/open-meteorite/actions/workflows/dev_build.yml)
+[![build](https://img.shields.io/github/actions/workflow/status/Kelvinlby/open-meteorite/build.yml?branch=master&style=for-the-badge&logo=github&label=Build)](https://github.com/Kelvinlby/open-meteorite/actions/workflows/build.yml)
 
 An addon for [Meteor Client](https://github.com/MeteorDevelopment/meteor-client) that adds performance-oriented
 rendering modules.
@@ -11,11 +11,11 @@ rendering modules.
 |---------------------|---------------------|
 | Minecraft           | 1.21.11             |
 | Meteor Client       | `26.1.2-SNAPSHOT`   |
-| Fabric Loader       | `0.19.2` or newer   |
+| Fabric Loader       | `0.19.0` or newer   |
 | Java                | 25 or newer         |
 
-> Open Meteorite targets Minecraft 1.21.11. Each Minecraft release generally requires a matching build of both
-> Meteor Client and this addon.
+> Open Meteorite targets Minecraft 1.21.11, whose Meteor Client build uses the `26.1.2` version scheme. Each Minecraft
+> release generally requires a matching build of both Meteor Client and this addon.
 
 ## Installation
 
