@@ -1,6 +1,6 @@
-package com.example.addon.mixin;
+package addon.kelvinlby.openmeteorite.mixin;
 
-import com.example.addon.AddonTemplate;
+import addon.kelvinlby.openmeteorite.OpenMeteorite;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.main.GameConfig;
 import org.spongepowered.asm.mixin.Mixin;
@@ -26,6 +26,6 @@ public abstract class ExampleMixin {
      */
     @Inject(method = "<init>", at = @At("TAIL"))
     private void onGameLoaded(GameConfig gameConfig, CallbackInfo ci) {
-        AddonTemplate.LOG.info("Hello from ExampleMixin!");
+        OpenMeteorite.LOG.info("Hello from ExampleMixin!");
     }
 }

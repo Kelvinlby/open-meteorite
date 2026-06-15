@@ -23,12 +23,9 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew build
 
-      - name: Release
-        uses: softprops/action-gh-release@v3
+      - name: Upload Build Artifact
+        uses: actions/upload-artifact@v7
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          tag_name: snapshot
-          name: Dev Build
-          prerelease: true
-          files: |
-            ./build/libs/*.jar
+          name: open-meteorite-${{ github.sha }}
+          path: ./build/libs/*.jar
+          retention-days: 7

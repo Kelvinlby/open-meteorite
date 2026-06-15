@@ -8,6 +8,10 @@ base {
     group = properties["maven_group"] as String
 }
 
+loom {
+    accessWidenerPath = file("src/main/resources/open-meteorite.accesswidener")
+}
+
 repositories {
     maven {
         name = "meteor-maven"

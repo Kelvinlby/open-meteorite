@@ -1,25 +1,26 @@
 {
   "schemaVersion": 1,
-  "id": "addon-template",
+  "id": "open-meteorite",
   "version": "${version}",
-  "name": "Addon Template",
-  "description": "An addon template for Meteor Client addons.",
+  "name": "Open Meteorite",
+  "description": "A Meteor Client addon.",
   "authors": [
-    "seasnail"
+    "kelvinlby"
   ],
   "contact": {
-    "sources": "https://github.com/MeteorDevelopment/meteor-addon-template"
+    "sources": "https://github.com/kelvinlby/open-meteorite"
   },
-  "icon": "assets/template/icon.png",
+  "icon": "assets/open-meteorite/icon.png",
   "environment": "client",
   "entrypoints": {
     "meteor": [
-      "com.example.addon.AddonTemplate"
+      "addon.kelvinlby.openmeteorite.OpenMeteorite"
     ]
   },
   "mixins": [
-    "addon-template.mixins.json"
+    "open-meteorite.mixins.json"
   ],
+  "accessWidener": "open-meteorite.accesswidener",
   "custom": {
     "meteor-client:color": "225,25,25",
     "modmenu": {
